@@ -26,15 +26,16 @@ import base64
 
 import time
 from enum import Enum
+from typing import Union, List, Any, Dict
 
 
 ## Function to load OpenAI model and get respones
 def get_gemini_response(
-    input,
-    media_content,
-    generation_config,
-    safety_settings,
-    media_type="image",
+    input: Union[str, List[str]],
+    media_content: Any,
+    generation_config: Dict,
+    safety_settings: Union[List[Dict], Dict],
+    media_type: str = "image",
     api_key: str = None,
 ):
     print(f"Safety Settings: {safety_settings}")
@@ -57,10 +58,10 @@ def get_gemini_response(
         )
 
     if input != "":
-        with open("tmp/input.txt", "w") as f:
-            f.write(str(media_content))
-        response = model.generate_content([input, media_content], stream=True)
-
+        # For debugging
+        # with open("tmp/input.txt", "w") as f:
+        #     f.write(str(media_content))
+        response = model.generate_content(input + [media_content], stream=True)
     else:
         response = model.generate_content(media_content, stream=True)
 

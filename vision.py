@@ -11,7 +11,7 @@ media_content, media_type = handle_media_upload()
 # Handle JSON file upload for authentication
 api_key = handle_credentials(media_type=media_type)
 
-input = st.text_input("Input Prompt: ", key="input")
+# input = st.text_input("Input Prompt: ", key="input")
 
 # Allow multiple prompts
 st.subheader("Enter Prompts")
@@ -71,7 +71,7 @@ if submit:
         final_safety_settings = safety_settings
 
     response = get_gemini_response(
-        input,
+        prompts,
         media_content=media_content,
         generation_config=generation_config,
         media_type=media_type,
@@ -79,7 +79,7 @@ if submit:
         api_key=api_key,
     )
     for chunk in response:
-        # print(chunk.text) -> For Debugging
+        print(chunk.text)  # For Debugging
         st.write(chunk.text)
 
     if os.path.exists("tmp/json_data.json"):
