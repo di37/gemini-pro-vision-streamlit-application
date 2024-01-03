@@ -8,7 +8,8 @@ from utils import *
 
 def handle_media_upload():
     uploaded_file = st.file_uploader(
-        "Choose an image or video...", type=["jpg", "jpeg", "png", "mp4"]
+        "**Drag and drop or upload an Image 🖼️ or a Video 📺**",
+        type=["jpg", "jpeg", "png", "mp4"],
     )
     media_content = ""
     media_type = "image"

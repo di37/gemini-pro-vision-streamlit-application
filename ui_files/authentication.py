@@ -9,13 +9,13 @@ from utils import *
 def handle_credentials(media_type: str = "image"):
     if media_type == "image":
         api_key = st.text_input(
-            "GOOGLE AI STUDIO API KEY - Required For Image.", key="api_key"
+            "🔐 GOOGLE AI STUDIO API KEY - Required For Image.", key="api_key"
         )
         return api_key
 
     elif media_type == "video":
         uploaded_json = st.file_uploader(
-            "Upload a JSON file which includes Google Service Account Credentials - Required for Video.",
+            "🔐 Upload a JSON file which includes Google Service Account Credentials - Required for Video.",
             type=["json"],
         )
 
@@ -28,4 +28,6 @@ def handle_credentials(media_type: str = "image"):
 
             os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = json_path
             service_account.Credentials.from_service_account_info(json_data)
-            st.success("Environment variables set from JSON file.")
+            st.success(
+                "Environment variable GOOGLE_APPLICATION_CREDENTIALS set from JSON file."
+            )

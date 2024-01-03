@@ -14,9 +14,7 @@ api_key = handle_credentials(media_type=media_type)
 # input = st.text_input("Input Prompt: ", key="input")
 
 # Allow multiple prompts
-st.subheader("Enter Prompts")
-# prompts = st.text_area("Input Prompts (separate prompts with a newline)", height=100)
-# prompt_list = [prompt.strip() for prompt in prompts.split("\n") if prompt.strip()]
+st.write("Enter a single or multiple prompts.")
 
 # Initialize session state variables if they don't exist
 if "input_list" not in st.session_state:
