@@ -1,0 +1,6 @@
+services:
+  pythonapp:
+    build: ./
+    image: gemini-streamlit-application
+    ports:
+      - "9010:8501"
